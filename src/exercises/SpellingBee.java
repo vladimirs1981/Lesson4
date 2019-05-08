@@ -23,6 +23,19 @@ public class SpellingBee {
 	
 	void stuffForYouToDo() {
 		// Write your code here...
+		while (true) {
+			
+		getRandomWord();
+		speak(getRandomWord());
+		String spell = JOptionPane.showInputDialog("Can you spell the word?");
+		if (spell.equals(getRandomWord())) {
+			JOptionPane.showMessageDialog(null, "Correct, try next word:");
+		}else {
+			do {
+				JOptionPane.showMessageDialog(null, "Wrong, try again");
+			} while (spell!=getRandomWord());
+		}
+		}
 		
 		
 		
