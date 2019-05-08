@@ -22,17 +22,18 @@ public class SpellingBee {
 	 */
 	
 	void stuffForYouToDo() {
-		// Write your code here...
+		
 		while (true) {
 			
-		getRandomWord();
+	
 		speak(getRandomWord());
 		String spell = JOptionPane.showInputDialog("Can you spell the word?");
-		if (spell.equals(getRandomWord())) {
+		if (spell.equalsIgnoreCase(getRandomWord())) {
 			JOptionPane.showMessageDialog(null, "Correct, try next word:");
 		}else {
 			do {
-				JOptionPane.showMessageDialog(null, "Wrong, try again");
+				
+				JOptionPane.showInputDialog(null, "Wrong, try again");
 			} while (spell!=getRandomWord());
 		}
 		}
@@ -56,12 +57,12 @@ public class SpellingBee {
 	public SpellingBee() {
 		try {
 			// Get the amount of lines
-			LineNumberReader lnr = new LineNumberReader(new FileReader(new File("/usr/share/dict/words")));
+			LineNumberReader lnr = new LineNumberReader(new FileReader(new File("bin\\words.txt")));
 			lnr.skip(Long.MAX_VALUE);// Skip to the end
 			lines = lnr.getLineNumber();// Get last line number
 			System.out.println(lines + " words loaded.");
 			lnr.close();
-			BufferedReader br = new BufferedReader(new FileReader(new File("/usr/share/dict/words")));
+			BufferedReader br = new BufferedReader(new FileReader(new File("bin\\words.txt")));
 			for (int i = 0; i < lines; i++) {
 				words.add(br.readLine()); // adds every line to the array
 			}
