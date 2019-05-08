@@ -10,10 +10,26 @@ import javax.swing.JOptionPane;
 public class AnimalFarm {
 
 	AnimalFarm() {
-		/* 1. Ask the user which animal they want, then play the sound of that animal. */
+		while (true) {
+			String animal = JOptionPane.showInputDialog(null, "Which animal do you want?");
 
-		/* 2. Make it so that the user can keep entering new animals. */
-
+			if (animal.isEmpty()) {
+				System.exit(0);
+			}
+			if (animal.equalsIgnoreCase("duck")) {
+				playQuack();
+			} else if (animal.equalsIgnoreCase("cow")) {
+				playMoo();
+			} else if (animal.equalsIgnoreCase("dog")) {
+				playWoof();
+			} else if (animal.equalsIgnoreCase("cat")) {
+				playMeow();
+			} else if (animal.equalsIgnoreCase("llama")) {
+				playLlama();
+			} else {
+				JOptionPane.showMessageDialog(null, "Animal not found,try again");
+			}
+		}
 	}
 
 	void playMoo() {
@@ -26,6 +42,14 @@ public class AnimalFarm {
 
 	void playWoof() {
 		playNoise(woofFile);
+	}
+
+	void playMeow() {
+		playNoise(meowFile);
+	}
+
+	void playLlama() {
+		playNoise(llamaFile);
 	}
 
 	String quackFile = "sound/quack.wav";
