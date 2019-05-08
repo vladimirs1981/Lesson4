@@ -1,35 +1,39 @@
 package exercises;
 
+import org.jointheleague.graphical.robot.Robot;
+
 public class TriangleShell {
 
-	// 1. Instantiate a new Robot
+	Robot shelly = new Robot("mini");
 
 	void go() {
-		drawTriangle(100);	//3. Remove this command, it's just for testing
 
-		// 6. Make the robot go as fast as possible
+		shelly.setSpeed(100);
 
-		// 4. make a variable to hold the length of the triangle and set it to 50
+		int lenght = 50;
 
-		// 7. Do all the steps below, 60 times
+		for (int i = 0; i < 60; i++) {
 
-			// 9. Change the color of the pen to a random color
-	
-			// 8. Increase the length of the side by 10 pixels
-	
-			// 5. call your drawTriangle() method using your length variable
+			shelly.setRandomPenColor();
 
-			// 10. Turn the robot 6 degrees to the right
+			lenght += 10;
 
+			drawTriangle(lenght);
+
+			shelly.turn(6);
+
+		}
 	}
 
-	/* 2. Fill in the method below to draw a triangle. Use the length variable for the size of the triangle. */
 	private void drawTriangle(int length) {
-		
-		
+		shelly.penDown();
+		for (int i = 0; i < 3; i++) {
+			shelly.move(length);
+			shelly.turn(120);
+		}
+
 	}
 
-	
 	public static void main(String[] args) {
 		new TriangleShell().go();
 	}
