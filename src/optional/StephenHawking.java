@@ -1,16 +1,22 @@
 package optional;
 
+import javax.swing.JOptionPane;
+
 import voce.SpeechSynthesizer;
 
 public class StephenHawking {
+	public static void main(String[] args) {
 
-	// 1. make a main method and put steps 2, 3 & 4 inside it
-	// 2. ask the user for a sentence
-	// 3. call the speak method below and send it the sentence
-	// 4. repeat steps 2 and 3 a lot of times
+		while (true) {
+			String sentence = JOptionPane.showInputDialog(null, "Write a sentence");
+			if (sentence.isEmpty()) {
+				System.exit(0);
+			} else {
+				speak(sentence);
+			}
+		}
+	}
 
-	
-	/* Don’t change this…. */
 	static void speak(String words) {
 		SpeechSynthesizer speaker = new SpeechSynthesizer("speaker");
 		speaker.synthesize(words);
